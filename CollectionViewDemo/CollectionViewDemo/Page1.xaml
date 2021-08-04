@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewDemo.Page1">
+    <ContentPage.Content>
+        <StackLayout>
+            <SwipeView>
+                <SwipeView.LeftItems>
+                    <SwipeItem BackgroundColor="LightGreen"
+                               Text="Favorite"
+                               Invoked="SwipeItem_Invoked"/>
+                    <SwipeItem BackgroundColor="LightPink"
+                               Text="Delete"
+                               Invoked="SwipeItem_Invoked"/>
+                </SwipeView.LeftItems>
+                <Grid BackgroundColor="LightGray"
+                      HeightRequest="60"
+                      WidthRequest="300">
+                    <Label HorizontalOptions="Center"
+                           Text="Swipe Right"
+                           VerticalOptions="Center"/>
+                </Grid>
+            </SwipeView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

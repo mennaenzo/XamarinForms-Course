@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:selectors="clr-namespace:CollectionViewDemo.Selectors"
+             x:Class="CollectionViewDemo.MainPage"
+             BackgroundColor="LightBlue">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <selectors:ProductDataTemplateSelector x:Key="ProductTemplateSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <RefreshView Command="{Binding RefreshCommand}"
+                 IsRefreshing="{Binding IsRefreshing}">
+        
+        <CollectionView ItemsSource="{Binding Products}" Margin="25"
+                    ItemTemplate="{StaticResource ProductTemplateSelector}"
+                    x:Name="collectionView"
+                    RemainingItemsThreshold="1"
+                    RemainingItemsThresholdReachedCommand="{Binding ThresholdReachedCommand}">
+        <CollectionView.Resources>
+            <DataTemplate x:Key="product">
+                <SwipeView>
+                    <SwipeView.LeftItems>
+                        <SwipeItem
+                            BackgroundColor="White"
+                            Command="{Binding Source={x:Reference collectionView},
+                            Path=BindingContext.DeleteCommand}"
+                            CommandParameter="{Binding}"
+                            IconImageSource="trash.png"
+                            Text="Delete!"/>
+                    </SwipeView.LeftItems>
+                <Frame Padding="5"
+                       CornerRadius="5"
+                       IsClippedToBounds="False">
+
+                    <Grid HeightRequest="100">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".3*"/>
+                            <ColumnDefinition Width=".7*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".5*"/>
+                            <RowDefinition Height=".5*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.RowSpan="2"
+                               Source="{Binding Image}"/>
+
+                        <Label Grid.Column="1"
+                               FontAttributes="Bold"
+                               FontSize="Large"
+                               Text="{Binding Name}"
+                               VerticalOptions="Center"/>
+
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               FontSize="Medium"
+                               Text="{Binding Price, StringFormat='{0:C}'}"/>
+                    </Grid>
+                </Frame>
+                </SwipeView>
+            </DataTemplate>
+            <DataTemplate x:Key="productWithOffer">
+                <Frame Padding="5"
+                       CornerRadius="5"
+                       IsClippedToBounds="False"
+                       BackgroundColor="LightSalmon">
+                    <Grid HeightRequest="100">
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".5*"/>
+                            <RowDefinition Height=".5*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".5*"/>
+                            <ColumnDefinition Width=".5*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackLayout Grid.RowSpan="2" VerticalOptions="Center">
+                            <Label Text="Offer!"
+                                   TextColor="DarkRed"
+                                   FontSize="Title"
+                                   VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Name}"
+                                   FontSize="Medium"
+                                   TextColor="Red"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+
+                        <Image Grid.Column="1"
+                               Source="{Binding Image}"/>
+
+                        <StackLayout Grid.Column="1"
+                                     Grid.Row="1"
+                                     Orientation="Horizontal"
+                                     VerticalOptions="Center">
+                            <Label Text="{Binding Price, StringFormat='{0:C}'}"
+                                   FontSize="Medium"
+                                   VerticalTextAlignment="Center"
+                                   TextDecorations="Strikethrough"/>
+                            <Label Text="{Binding OfferPrice, StringFormat='{0:C}'}"
+                                   FontSize="Large"
+                                   VerticalTextAlignment="Center"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.Resources>
+    </CollectionView>
+        
+    </RefreshView>
+
+</ContentPage>
