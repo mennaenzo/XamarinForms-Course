@@ -20,11 +20,14 @@ namespace CollectionViewDemo.Views
                 new PeoplePageViewModel();
         }
 
+        //private void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    var element = e.CurrentSelection;
+        //}
+
         //private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
         //    var element = e.CurrentSelection;
-
-
         //}
     }
 }

@@ -4,11 +4,19 @@
              x:Class="CollectionViewDemo.Views.PeoplePage"
              BackgroundColor="DodgerBlue">
 
-    <CollectionView Margin="10"
+    <!--<CollectionView Margin="10"
+                    x:Name="collectionView"
                     ItemsSource="{Binding People}"
                     SelectionMode="Single"
                     SelectedItem="{Binding SelectedPerson}"
-                    SelectionChangedCommand="{Binding PersonChangedCommand}">
+                    SelectionChangedCommand="{Binding PersonChangedCommand}"
+                    SelectionChangedCommandParameter="{Binding Source={x:Reference collectionView}, Path=SelectedItem}">-->
+    <CollectionView Margin="10"
+                    x:Name="collectionView"
+                    ItemsSource="{Binding People}"
+                    SelectionMode="Multiple"
+                    SelectionChangedCommand="{Binding PeopleChangedCommand}"
+                    SelectionChangedCommandParameter="{Binding Source={x:Reference collectionView}, Path=SelectedItems}">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout ItemSpacing="10"
                                Orientation="Vertical"/>
