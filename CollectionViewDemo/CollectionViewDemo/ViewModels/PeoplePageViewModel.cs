@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -43,7 +44,9 @@ namespace CollectionViewDemo.ViewModels
 
             People = new ObservableCollection<Person>(people);
 
-            SelectedPeople = new List<object>();
+            SelectedPeople = new List<object>(People.Take(5));
+
+            SelectedPerson = People.Skip(3).Take(1).FirstOrDefault();
 
             PersonChangedCommand = new Command((p) =>
             {
