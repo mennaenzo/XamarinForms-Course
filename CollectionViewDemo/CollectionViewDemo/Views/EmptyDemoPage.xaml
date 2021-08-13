@@ -3,16 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CollectionViewDemo.Views.EmptyDemoPage">
 
-    <CollectionView EmptyView="No data">
+    <CollectionView>
+        <CollectionView.EmptyView>
+            <Grid>
+                <StackLayout VerticalOptions="Center">
+                    <Image
+                        HeightRequest="150"
+                        Source="notfound"
+                        VerticalOptions="Center"/>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        Text="No Results"/>
+                </StackLayout>
+            </Grid>
+        </CollectionView.EmptyView>
         <CollectionView.ItemsSource>
-            <x:Array Type="{x:Type x:String}">
+            <!--<x:Array Type="{x:Type x:String}">
                 <x:String>Row Sample</x:String>
                 <x:String>Row Sample</x:String>
                 <x:String>Row Sample</x:String>
                 <x:String>Row Sample</x:String>
                 <x:String>Row Sample</x:String>
                 <x:String>Row Sample</x:String>
-            </x:Array>
+            </x:Array>-->
         </CollectionView.ItemsSource>
     </CollectionView>
     
