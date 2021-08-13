@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CollectionViewDemo.Views.EmptyDemoPage">
+             x:Class="CollectionViewDemo.Views.EmptyDemoPage"
+             xmlns:custom="clr-namespace:CollectionViewDemo.CustomTypes">
 
     <ContentPage.Resources>
         <ContentView x:Key="NoResultsView">
@@ -43,8 +44,22 @@
         </StackLayout>
         <CollectionView x:Name="collectionView">
             <CollectionView.EmptyView>
-
+                <custom:FilterData Filter="xamarin"/>
             </CollectionView.EmptyView>
+
+            <CollectionView.EmptyViewTemplate>
+                <DataTemplate>
+                    <Label
+                        Margin="10,20,10,10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
+                        VerticalTextAlignment="Center"/>
+                </DataTemplate>
+            </CollectionView.EmptyViewTemplate>
+            
             <CollectionView.ItemsSource>
                 <!--<x:Array Type="{x:Type x:String}">
                 <x:String>Row Sample</x:String>
