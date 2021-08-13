@@ -11,7 +11,7 @@ namespace CollectionViewDemo
         {
             InitializeComponent();
 
-            MainPage = new PeoplePage();
+            MainPage = new EmptyDemoPage();
 
         }
 
