@@ -2,9 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CollectionViewDemo.Views.EmptyDemoPage"
-             xmlns:custom="clr-namespace:CollectionViewDemo.CustomTypes">
+             xmlns:custom="clr-namespace:CollectionViewDemo.CustomTypes"
+             xmlns:selectors="clr-namespace:CollectionViewDemo.Selectors">
 
     <ContentPage.Resources>
+
+        <DataTemplate x:Key="TextFormat1">
+            <Label
+                        Margin="10,20,10,10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
+                        VerticalTextAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="TextFormat2">
+            <Label
+                        Margin="10,20,10,10"
+                        FontAttributes="Italic"
+                        FontSize="25"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
+                        VerticalTextAlignment="Center"/>
+        </DataTemplate>
+
+        <selectors:SearchTermDataTemplateSelector
+            x:Key="searchSelector"
+            DefaultTemplate="{StaticResource TextFormat1}"
+            SecondaryTemplate="{StaticResource TextFormat2}"/>
+
         <ContentView x:Key="NoResultsView">
             <Grid>
                 <StackLayout VerticalOptions="Center">
@@ -42,33 +70,12 @@
             <Label Text="Toggle EmptyViews"/>
             <Switch Toggled="Switch_Toggled"/>
         </StackLayout>
-        <CollectionView x:Name="collectionView">
+        <CollectionView x:Name="collectionView"
+                        EmptyViewTemplate="{StaticResource searchSelector}">
             <CollectionView.EmptyView>
-                <custom:FilterData Filter="xamarin"/>
+                <custom:FilterData Filter="azure"/>
             </CollectionView.EmptyView>
-
-            <CollectionView.EmptyViewTemplate>
-                <DataTemplate>
-                    <Label
-                        Margin="10,20,10,10"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Fill"
-                        HorizontalTextAlignment="Center"
-                        Text="{Binding Filter, StringFormat='Your filter term of {0} did not match any records.'}"
-                        VerticalTextAlignment="Center"/>
-                </DataTemplate>
-            </CollectionView.EmptyViewTemplate>
-            
             <CollectionView.ItemsSource>
-                <!--<x:Array Type="{x:Type x:String}">
-                <x:String>Row Sample</x:String>
-                <x:String>Row Sample</x:String>
-                <x:String>Row Sample</x:String>
-                <x:String>Row Sample</x:String>
-                <x:String>Row Sample</x:String>
-                <x:String>Row Sample</x:String>
-            </x:Array>-->
             </CollectionView.ItemsSource>
         </CollectionView>
     </StackLayout>
