@@ -20,5 +20,15 @@
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate>
+                <Label BackgroundColor="LightGray"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       Text="{Binding Name}"
+                       TextColor="Black"/>
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
     </CollectionView>
+    
 </ContentPage>
