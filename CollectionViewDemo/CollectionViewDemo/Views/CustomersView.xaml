@@ -5,7 +5,8 @@
 
 
     <CollectionView ItemsSource="{Binding Customers}"
-                    IsGrouped="True">
+                    IsGrouped="True"
+                    Scrolled="CollectionView_Scrolled">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout ItemSpacing="10"
                                Orientation="Vertical"/>
