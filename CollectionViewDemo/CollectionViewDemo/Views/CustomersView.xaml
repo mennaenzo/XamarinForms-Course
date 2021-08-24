@@ -16,7 +16,9 @@
                         VerticalScrollBarVisibility="Never">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout ItemSpacing="10"
-                               Orientation="Vertical"/>
+                               Orientation="Vertical"
+                               SnapPointsType="MandatorySingle"
+                               SnapPointsAlignment="Center"/>
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
