@@ -30,5 +30,10 @@ namespace CollectionViewDemo.Views
             Debug.WriteLine("CenterItemIndex: " + e.CenterItemIndex);
             Debug.WriteLine("LastVisibleItemIndex: " + e.LastVisibleItemIndex);
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            collectionView.ScrollTo(0,8); //bugeado en Android, si funciona en iOS
+        }
     }
 }

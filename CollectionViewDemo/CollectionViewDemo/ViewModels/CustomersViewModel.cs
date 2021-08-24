@@ -24,6 +24,16 @@ namespace CollectionViewDemo.ViewModels
                           into groups
                           select new CustomerGroup(groups.Key, groups.ToList());
 
+            int id = 0;
+            foreach (var group in grouped)
+            {
+                foreach (var item in group)
+                {
+                    item.Id = id;
+                    id++;
+                }
+            }
+
             Customers = new List<CustomerGroup>(grouped);
 
             Customers.Add(new CustomerGroup("Empty", new List<Customer>()));
