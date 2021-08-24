@@ -14,10 +14,17 @@ namespace CollectionViewDemo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CustomersView : ContentPage
     {
+        public CustomersViewModel vm = new CustomersViewModel();
+
         public CustomersView()
         {
             InitializeComponent();
-            BindingContext = new CustomersViewModel();
+            BindingContext = vm;
+        }
+
+        protected override async void OnAppearing()
+        {
+            await vm.GetData();
         }
 
         private void CollectionView_Scrolled(object sender, ItemsViewScrolledEventArgs e)
