@@ -25,6 +25,8 @@ namespace CollectionViewDemo.ViewModels
                           select new CustomerGroup(groups.Key, groups.ToList());
 
             Customers = new List<CustomerGroup>(grouped);
+
+            Customers.Add(new CustomerGroup("Empty", new List<Customer>()));
         }
     }
 }
