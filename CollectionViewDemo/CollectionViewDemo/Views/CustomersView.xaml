@@ -2,11 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CollectionViewDemo.Views.CustomersView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+
+    <CollectionView ItemsSource="{Binding Customers}"
+                    IsGrouped="True">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout ItemSpacing="10"
+                               Orientation="Vertical"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame BackgroundColor="White" CornerRadius="15">
+                    <StackLayout>
+                        <Label Text="{Binding Name}"/>
+                        <Label Text="{Binding Phone}"/>
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
