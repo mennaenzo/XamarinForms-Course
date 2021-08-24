@@ -10,7 +10,8 @@
         <CollectionView ItemsSource="{Binding Customers}"
                         IsGrouped="True"
                         Scrolled="CollectionView_Scrolled"
-                        x:Name="collectionView">
+                        x:Name="collectionView"
+                        ItemsUpdatingScrollMode="KeepLastItemInView">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout ItemSpacing="10"
                                Orientation="Vertical"/>

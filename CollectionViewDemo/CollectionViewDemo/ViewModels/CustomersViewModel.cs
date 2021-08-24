@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace CollectionViewDemo.ViewModels
 {
     public class CustomersViewModel
     {
-        public List<CustomerGroup> Customers { get; set; }
+        public ObservableCollection<CustomerGroup> Customers { get; set; }
 
         public CustomersViewModel()
         {
@@ -34,7 +35,7 @@ namespace CollectionViewDemo.ViewModels
                 }
             }
 
-            Customers = new List<CustomerGroup>(grouped);
+            Customers = new ObservableCollection<CustomerGroup>(grouped);
 
             Customers.Add(new CustomerGroup("Empty", new List<Customer>()));
         }

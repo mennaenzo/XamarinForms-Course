@@ -37,6 +37,17 @@ namespace CollectionViewDemo.Views
 
             var viewModel = BindingContext as CustomersViewModel;
 
+            viewModel.Customers.Add(new Models.CustomerGroup("newGroup",
+                new List<Models.Customer>
+                {
+                    new Models.Customer
+                    {
+                        Id = 100,
+                        Name = "newItem",
+                        Phone = "111111"
+                    }
+                }));
+
             var customer = viewModel
                 .Customers
                 .SelectMany(c => c)
