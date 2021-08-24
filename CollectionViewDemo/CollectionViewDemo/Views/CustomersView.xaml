@@ -11,7 +11,9 @@
                         IsGrouped="True"
                         Scrolled="CollectionView_Scrolled"
                         x:Name="collectionView"
-                        ItemsUpdatingScrollMode="KeepLastItemInView">
+                        ItemsUpdatingScrollMode="KeepLastItemInView"
+                        HorizontalScrollBarVisibility="Never"
+                        VerticalScrollBarVisibility="Never">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout ItemSpacing="10"
                                Orientation="Vertical"/>
