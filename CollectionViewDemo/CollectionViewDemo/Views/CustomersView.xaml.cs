@@ -33,7 +33,16 @@ namespace CollectionViewDemo.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            collectionView.ScrollTo(0,8); //bugeado en Android, si funciona en iOS
+            //collectionView.ScrollTo(0,8); //bugeado en Android, si funciona en iOS
+
+            var viewModel = BindingContext as CustomersViewModel;
+
+            var customer = viewModel
+                .Customers
+                .SelectMany(c => c)
+                .FirstOrDefault(i => i.Id == 25);
+
+            collectionView.ScrollTo(customer);
         }
     }
 }
