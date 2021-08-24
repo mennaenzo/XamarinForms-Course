@@ -42,7 +42,7 @@ namespace CollectionViewDemo.Views
                 .SelectMany(c => c)
                 .FirstOrDefault(i => i.Id == 25);
 
-            collectionView.ScrollTo(customer);
+            collectionView.ScrollTo(customer, animate: false);
         }
     }
 }
